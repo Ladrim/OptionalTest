@@ -1,7 +1,8 @@
-package org.alfonso.optional.repository;
+package org.alfonso.optional;
 
 import org.alfonso.optional.models.Fabricante;
-import org.alfonso.optional.models.Procesador;
+import org.alfonso.optional.repository.PcRepository;
+import org.alfonso.optional.repository.PcRepositoryInMemory;
 
 import java.util.List;
 import java.util.Optional;
