@@ -1,6 +1,7 @@
 package org.alfonso.optional.repository;
 
 import org.alfonso.optional.models.Fabricante;
+import org.alfonso.optional.models.Procesador;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +38,15 @@ public class OptionalMapFilter
         String pc = repositorio.filtrar("Asus ROG")
                 .map(it -> it.getProcesador().getFabricante().getNombre())
                 .orElse("No se ha encontrado nada");
+
+
+        String pcTest = repositorio.filtrar("Asus ROG")
+                .flatMap(it->it.getProcesador())
+                .flatMap(it->it.getFabricante())
+                .map(it->it.getNombre()).orElse("No se ha encontrado nada")
+               ;
+
+
 
         String pc2 = repositorio.filtrar("Asus ROG")
                 .map(it -> it.getProcesador().getFabricante())

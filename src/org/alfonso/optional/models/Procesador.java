@@ -13,13 +13,16 @@ public class Procesador
         this.fabricante = fabricante;
     }
 
-    public String getNombre() {return nombre;}
+    public String getNombre()
+    {   return nombre;}
 
     public Optional<Fabricante> getFabricante()
-    {return Optional.ofNullable(fabricante);}
+    {   return Optional.ofNullable(fabricante);}
 
-    public void setNombre(String nombre) {this.nombre = nombre;}
+    public void setNombre(String nombre)
+    {   this.nombre = nombre;}
 
     @Override
-    public String toString() {return nombre;}
+    public String toString()
+    {   return nombre;}
 }
