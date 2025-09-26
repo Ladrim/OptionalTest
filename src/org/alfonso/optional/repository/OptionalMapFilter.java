@@ -35,24 +35,19 @@ public class OptionalMapFilter
                 .map(it -> it.getProcesador().map(proc -> proc.getNombre()))
                 .collect(Collectors.toList());
 
+
+
         String pc = repositorio.filtrar("Asus ROG")
-                .map(it -> it.getProcesador().getFabricante().getNombre())
-                .orElse("No se ha encontrado nada");
-
-
-        String pcTest = repositorio.filtrar("Asus ROG")
                 .flatMap(it->it.getProcesador())
                 .flatMap(it->it.getFabricante())
-                .map(it->it.getNombre()).orElse("No se ha encontrado nada")
-               ;
+                .map(it->it.getNombre()).orElse("No se ha encontrado nada");
 
 
 
-        String pc2 = repositorio.filtrar("Asus ROG")
-                .map(it -> it.getProcesador().getFabricante())
-                .filter(it -> it.getNombre().equalsIgnoreCase("Intel"))
-                .map(it -> it.getNombre())
-                .orElse("No se ha encontrado nada");
+        String pc2 = repositorio.filtrar("MacBook Pro")
+                .flatMap(it->it.getProcesador())
+                .flatMap(it->it.getFabricante())
+                .map(it->it.getNombre()).orElse("No se ha encontrado nada");
 
 
         Optional<Fabricante> fabricanteOpt = repositorio.filtrar("Asus ROG")
