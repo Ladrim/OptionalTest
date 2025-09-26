@@ -1,6 +1,6 @@
 package org.alfonso.optional;
 
-public class Optional
+public class OptionalTest1
 {
     public static void main(String[] args)
     {
