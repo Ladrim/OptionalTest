@@ -15,7 +15,8 @@ public class Procesador
 
     public String getNombre() {return nombre;}
 
-    public Optional<Fabricante> getFabricante() {return Optional.ofNullable(fabricante);}
+    public Optional<Fabricante> getFabricante()
+    {return Optional.ofNullable(fabricante);}
 
     public void setNombre(String nombre) {this.nombre = nombre;}
 

@@ -6,8 +6,9 @@ import org.alfonso.optional.models.Procesador;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class PcRepositoryInMemory
+public class PcRepositoryInMemory implements PcRepository
 {
     private List<Pc> dataSource;
 
@@ -30,5 +31,21 @@ public class PcRepositoryInMemory
         dataSource.add(asus);
         dataSource.add(apple);
         dataSource.add(msi);
+    }
+
+    @Override
+    public Optional<Pc> filtrar(String nombre)
+    {
+        return dataSource.stream()
+                .filter(it -> it.getNombre().equalsIgnoreCase(nombre))
+                .findFirst();
+    }
+
+    @Override
+    public List<Pc> findByCpu(String cpuName)
+    {
+        return dataSource.stream()
+                .filter( it -> it.getProcesador().map( cpu -> cpu.getNombre().equalsIgnoreCase(cpuName)).orElse(false)  )
+                .toList();
     }
 }

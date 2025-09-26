@@ -18,7 +18,8 @@ public class Pc
 
     public String getNombre() {return nombre;}
     public String getModelo() {return modelo;}
-    public Optional<Procesador> getProcesador() {return Optional.ofNullable(procesador);}
+    public Optional<Procesador> getProcesador()
+    {return Optional.ofNullable(procesador);}
 
     public void setNombre(String nombre) {this.nombre = nombre;}
     public void setModelo(String modelo) {this.modelo = modelo;}
