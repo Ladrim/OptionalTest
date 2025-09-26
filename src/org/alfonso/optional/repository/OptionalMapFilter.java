@@ -18,11 +18,9 @@ public class OptionalMapFilter
                 .map(it -> it.getNombre())
                 .orElseThrow();
 
-
         String nombre2 = repositorio.filtrar("MacBook Pro")
                 .map(it -> it.getNombre())
                 .orElseThrow();
-
 
         List nombres = repositorio.findByCpu("I15").stream()
                 .map(it -> it.getNombre())
@@ -30,25 +28,25 @@ public class OptionalMapFilter
 
         System.out.println(nombres);
 
-
         List<Optional<String>> test  = repositorio.findByCpu("I10-8888J").stream()
                 .map(it -> it.getProcesador().map(proc -> proc.getNombre()))
                 .collect(Collectors.toList());
-
-
 
         String pc = repositorio.filtrar("Asus ROG")
                 .flatMap(it->it.getProcesador())
                 .flatMap(it->it.getFabricante())
                 .map(it->it.getNombre()).orElse("No se ha encontrado nada");
 
-
-
-        String pc2 = repositorio.filtrar("MacBook Pro")
+        String pc2 = repositorio.filtrar("Msi Gaming")
                 .flatMap(it->it.getProcesador())
                 .flatMap(it->it.getFabricante())
                 .map(it->it.getNombre()).orElse("No se ha encontrado nada");
 
+
+        String pc3 = repositorio.filtrar("MacBook Pro")
+                .flatMap(it->it.getProcesador())
+                .flatMap(it->it.getFabricante())
+                .map(it->it.getNombre()).orElse("No se ha encontrado nada");
 
         Optional<Fabricante> fabricanteOpt = repositorio.filtrar("Asus ROG")
                 .flatMap( it -> it.getProcesador())
@@ -57,9 +55,5 @@ public class OptionalMapFilter
         Optional<Optional<Optional<Fabricante>>> fabricanteOptOptOpt = repositorio.filtrar("Asus ROG")
                 .map( it -> it.getProcesador())
                 .map( it -> it.map( cpu -> cpu.getFabricante() ));
-
-        System.out.println(pc);
-
-        System.out.println(pc2);
     }
 }
